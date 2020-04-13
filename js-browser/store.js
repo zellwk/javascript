@@ -1,7 +1,6 @@
 // ========================
 // Stuff that makes localStorage easier to use
 // ========================
-
 /**
  * Gets item from localStorage
  * @param {string} item

@@ -1,6 +1,3 @@
-// ========================
-// Stuff that deals with CSS
-// ========================
 /**
  * Gets computed translate values
  * @param {HTMLElement} element

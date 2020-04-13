@@ -1,17 +1,17 @@
 /**
- * Checks if event is Tab key (without shift)
+ * Event is Tab (without shift)
  * @param {Object} event - The event object
  * @returns {Boolean}
  */
-export function isNormalTab (event) {
+export function normalTab (event) {
   return !event.shiftKey && event.key === 'Tab'
 }
 
 /**
- * Checks if event is shift key + Tab key
+ * Event is shift + Tab
  * @param {Object} event - The event object
  * @returns {Boolean}
  */
-export function isShiftTab (event) {
+export function shiftTab (event) {
   return event.shiftKey && event.key === 'Tab'
 }

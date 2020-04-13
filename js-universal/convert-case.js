@@ -1,3 +1,6 @@
+// ========================
+// Case Conversion Utilities
+// ========================
 /**
  * kebab-case -> Title Case
  * @param {String} string
