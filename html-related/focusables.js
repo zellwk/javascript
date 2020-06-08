@@ -16,8 +16,7 @@ export function getFocusableElements (element = document) {
  */
 export function getKeyboardFocusableElements (element = document) {
   return [...element.querySelectorAll(
-    'a, button, input, textarea, select, details, [tabindex]'
+    'a, button, input, textarea, select, summary, [tabindex]'
   )]
-    .filter(el => !el.hasAttribute('disabled'))
-    .filter(el => !el.hasAttribute('tabindex') || el.getAttribute('tabindex') >= 0)
+    .filter(el => !el.disabled && el.tabIndex > -1)
 }
