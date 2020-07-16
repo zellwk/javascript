@@ -1,0 +1,38 @@
+{
+  "name": "@zellwk/javascript",
+  "version": "1.0.0",
+  "description": "Here's a collection of useful JavaScript snippets I curated while building stuff.",
+  "main": "index.js",
+  "keywords": [
+    "javascript",
+    "node",
+    "snippets"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zellwk/useful-js-snippets.git"
+  },
+  "author": "Zell Liew <zellwk@gmail.com> (https://zellwk.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zellwk/useful-js-snippets/issues"
+  },
+  "homepage": "https://github.com/zellwk/useful-js-snippets#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@types/jest": "^26.0.4",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0",
+    "jest-extended": "^0.11.5"
+  }
+}

@@ -1,9 +1,8 @@
-import { getKeyboardFocusableElements } from '../html-related/focusables'
+import Focusable from '../focusable'
 
-export function trapFocus (element, event) {
-  const focusables = getKeyboardFocusableElements(element)
-  const firstFocusable = focusables[0]
-  const lastFocusable = focusables[focusables.length - 1]
+export default function trapFocus (element, event) {
+  const focusables = Focusable(element)
+  const { firstFocusable, lastFocusable } = focusables
 
   // Directs to first focusable
   if (document.activeElement === lastFocusable && event.key === 'Tab' && !event.shiftKey) {
