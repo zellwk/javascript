@@ -1,16 +1,20 @@
-# Useful JavaScript snippets
+# JavaScript
 
 I put together a collection of useful JavaScript snippets while building stuff. Hope you find them useful!
 
-Here's a list of everything in this repo:
+## Installation
 
-- Works for both Browser and Node
-  - [Convert Case](./convert-case/convert-case.js) - helpers for case covversion
-  - [generateUniqueString](./generate-unique-string/generate-unique-string.js) - Generates a unique string
-  - [mix](./mix/) - Merges objects (including accessors)
-  - [wait](./wait/wait.js) - Delay before resolving a promise
+Use this:
 
-- Works for Browsers only
+```bash
+npm install @zellwk/javascript
+```
+
+Then import whatever utilities you need.
+
+## List of everything
+
+- Browsers only
   - [After Polyfill](./polyfills/before.js)
   - [Before Polyfill](./polyfills/before.js)
   - [focusable](./focusable/) - Finds focusable elements
@@ -21,3 +25,13 @@ Here's a list of everything in this repo:
   - [store](./store/store.js)
   - [tab](./tab/tab.js) - Helpers for normal Tab key vs Shift + Tab
   - [trapFocus](./trap-focus/trap-focus.js) - traps focus
+
+- Everywhere
+  - [Convert Case](./convert-case/convert-case.js) - helpers for case covversion
+  - [generateUniqueString](./generate-unique-string/generate-unique-string.js) - Generates a unique string
+  - [mix](./mix/) - Merges objects (including accessors)
+  - [wait](./wait/wait.js) - Delay before resolving a promise
+
+## WIP Warning
+
+This repository is always a Work in Progress. I may change
