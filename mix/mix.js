@@ -10,6 +10,9 @@ function merge (output, input) {
   const props = Object.keys(input)
 
   for (const prop of props) {
+    // Prevents Prototype Pollution
+    if (prop === '__proto__') continue
+
     const descriptor = Object.getOwnPropertyDescriptor(input, prop)
     const value = descriptor.value
     if (value) descriptor.value = cloneDescriptorValue(value)

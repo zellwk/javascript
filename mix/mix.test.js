@@ -203,7 +203,13 @@ test('Nested Sets', () => {
   // That's why we're not testing WeakSet
 })
 
-// Types we don't need to clone or cannot clone.
-// Examples:
-// - Primitives don't need to clone
-// - Functions cannot clone
+// Prevents Prototype Pollution
+// https://codeburst.io/what-is-prototype-pollution-49482fc4b638
+test('Safe Merge', () => {
+  const polluted = JSON.parse('{"__proto__": {"admin": true}}')
+  const mixed = mix(polluted)
+
+  /* eslint-disable */
+  expect(mixed.__proto__).toBeEmpty()
+  /* eslint-enable */
+})
