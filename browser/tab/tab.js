@@ -3,7 +3,7 @@
  * @param {Object} event - The event object
  * @returns {Boolean}
  */
-export function normalTab (event) {
+export function tab (event) {
   return !event.shiftKey && event.key === 'Tab'
 }
 
