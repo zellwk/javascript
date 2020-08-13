@@ -1,7 +1,7 @@
 {
   "name": "@zellwk/javascript",
-  "version": "1.0.0",
-  "description": "Here's a collection of useful JavaScript snippets I curated while building stuff.",
+  "version": "0.1.0",
+  "description": "Collection JavaScript stuff I use.",
   "main": "index.js",
   "keywords": [
     "javascript",
@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "release": "np --no-publish && npm publish"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -33,6 +34,7 @@
     "@types/jest": "^26.0.4",
     "babel-jest": "^26.1.0",
     "jest": "^26.1.0",
-    "jest-extended": "^0.11.5"
+    "jest-extended": "^0.11.5",
+    "np": "^6.4.0"
   }
 }

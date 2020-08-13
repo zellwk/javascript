@@ -1,6 +1,6 @@
 # JavaScript
 
-I put together a collection of useful JavaScript snippets while building stuff. Hope you find them useful!
+I put together a collection of JavaScript stuff I use. Hope you find them useful!
 
 ## Installation
 
