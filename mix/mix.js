@@ -16,10 +16,30 @@ function merge (output, input) {
     const descriptor = Object.getOwnPropertyDescriptor(input, prop)
     const value = descriptor.value
     if (value) descriptor.value = cloneDescriptorValue(value)
-    Object.defineProperty(output, prop, descriptor)
-  }
 
-  return output
+    // If don't have prop => Define property
+    if (!output[prop]) {
+      Object.defineProperty(output, prop, descriptor)
+      continue
+    }
+
+    // If have prop, but type is not object => Overwrite by redefining property
+    if (typeof output[prop] !== 'object') {
+      Object.defineProperty(output, prop, descriptor)
+      continue
+    }
+
+    // If have prop, but type is Object => Concat the arrays together.
+    if (objectType(descriptor.value) === '[object Array]') {
+      output[prop] = output[prop].concat(descriptor.value)
+      continue
+    }
+
+    // If have prop, but type is Object => Merge.
+    merge(output[prop], descriptor.value)
+
+    // Not sure if I have to deal with overwriting maps / dates. When it comes, I guess!
+  }
 }
 
 // Creates a deep clone for each value

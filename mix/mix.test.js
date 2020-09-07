@@ -13,6 +13,62 @@ test('Merge objects', () => {
   })
 })
 
+test('Empty + Nested', () => {
+  const one = {}
+  const two = {
+    nested: {
+      value: 'nested-two',
+      deep: {
+        value: 'deep-two'
+      }
+    }
+  }
+  const three = mix(one, two)
+
+  expect(three).toEqual(two)
+  expect(three.nested.value).toBe('nested-two')
+  expect(three.nested.deep.value).toBe('deep-two')
+
+  // Prevents mutation of nested object
+  three.nested.value = 'three'
+  expect(two.nested.value).toBe('nested-two')
+
+  // Prevents mutation of deeply nested object
+  three.nested.deep.value = 'deep-three'
+  expect(two.nested.deep.value).toBe('deep-two')
+})
+
+test('Double Nested Objects', () => {
+  const one = {
+    one: 'one',
+    nested: {
+      one: 'nested-one',
+      deep: {
+        one: 'deep-one'
+      }
+    }
+  }
+
+  const two = {
+    two: 'two',
+    nested: {
+      two: 'nested-two',
+      deep: {
+        two: 'deep-two'
+      }
+    }
+  }
+
+  const three = mix(one, two)
+
+  expect(three.one).toBe('one')
+  expect(three.two).toBe('two')
+  expect(three.nested.one).toBe('nested-one')
+  expect(three.nested.two).toBe('nested-two')
+  expect(three.nested.deep.one).toBe('deep-one')
+  expect(three.nested.deep.two).toBe('deep-two')
+})
+
 test('Accessors', () => {
   let count = 0
   const one = {}
@@ -32,7 +88,7 @@ test('Accessors', () => {
   expect(two.count !== three.count)
 })
 
-test('Nested accessors', () => {
+test('Empty + Nested accessors', () => {
   let count = 0
   const one = {}
   const two = {
@@ -51,22 +107,32 @@ test('Nested accessors', () => {
   expect(descriptor.set).toBeFunction()
 })
 
-test('Nested objects', () => {
-  const one = {}
-  const two = { nested: { value: 'two', deep: { value: 'deep-two' } } }
+test('Double nested with Accessors', () => {
+  let count = 0
+  const one = {
+    nested: {
+      get accessOne () { return count },
+      set accessOne (value) { count = value }
+    }
+  }
+  const two = {
+    nested: {
+      get accessTwo () { return count },
+      set accessTwo (value) { count = value }
+    }
+  }
+
   const three = mix(one, two)
+  expect(one.nested).not.toBe(three.nested)
+  expect(two.nested).not.toBe(three.nested)
 
-  expect(three).toEqual(two)
-  expect(three.nested.value).toBe('two')
-  expect(three.nested.deep.value).toBe('deep-two')
+  const accessOne = Object.getOwnPropertyDescriptor(three.nested, 'accessOne')
+  const accessTwo = Object.getOwnPropertyDescriptor(three.nested, 'accessTwo')
 
-  // Prevents mutation of nested object
-  three.nested.value = 'three'
-  expect(two.nested.value).toBe('two')
-
-  // Prevents mutation of deeply nested object
-  three.nested.deep.value = 'deep-three'
-  expect(two.nested.deep.value).toBe('deep-two')
+  expect(accessOne.get).toBeFunction()
+  expect(accessOne.set).toBeFunction()
+  expect(accessTwo.get).toBeFunction()
+  expect(accessTwo.set).toBeFunction()
 })
 
 test('Nested arrays', () => {
@@ -81,6 +147,20 @@ test('Nested arrays', () => {
   three.array.push(4)
   expect(two.array).toBeArrayOfSize(3)
   expect(three.array).toBeArrayOfSize(4)
+})
+
+test('Double objects with nested same array', () => {
+  const one = {
+    array: [1, 2, 3]
+  }
+  const two = {
+    array: [4, 5, 6]
+  }
+
+  const three = mix(one, two)
+  console.log(three)
+  expect(three.array.push).toBeFunction()
+  expect(three.array).toBeArrayOfSize(6)
 })
 
 test('Objects in Arrays', () => {
