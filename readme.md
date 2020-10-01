@@ -1,6 +1,7 @@
 # JavaScript
 
 I put together a collection of JavaScript stuff I use. Hope you find them useful!
+These are the collection of some handful javascript snippets 
 
 ## Installation
 
@@ -11,6 +12,7 @@ npm install @zellwk/javascript
 ```
 
 Then import whatever utilities you need.
+it's completely open source
 
 ## List of everything
 
@@ -35,3 +37,4 @@ Then import whatever utilities you need.
 ## WIP Warning
 
 This repository is always a Work in Progress. I may change
+any suggestion are welcomed
