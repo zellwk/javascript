@@ -27,7 +27,7 @@ Then import whatever utilities you need.
   - [trapFocus](./trap-focus/trap-focus.js) - traps focus
 
 - Everywhere
-  - [Convert Case](./convert-case/convert-case.js) - helpers for case covversion
+  - [Convert Case](./convert-case/convert-case.js) - helpers for case conversion
   - [generateUniqueString](./generate-unique-string/generate-unique-string.js) - Generates a unique string
   - [mix](./mix/) - Merges objects (including accessors)
   - [wait](./wait/wait.js) - Delay before resolving a promise
