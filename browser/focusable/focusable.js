@@ -1,3 +1,6 @@
+// Todo: Make focusable elements list more complete.
+//  - See #2 and #7 for info.
+
 export default function Focusable (element = document) {
   return {
     get length () {
