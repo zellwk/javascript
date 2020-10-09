@@ -19,10 +19,8 @@ export function getWithExpiry (key) {
   const result = get(key)
   if (!result) return
 
-  const now = new Date()
-
   // Expired. Delete from localstorage
-  if (result.expiry < now.getTime()) {
+  if (result.expiry < Date.now()) {
     remove(key)
     return
   }
@@ -44,10 +42,9 @@ export function set (key, value) {
 }
 
 export function setWithExpiry (key, value, timeToExpiry) {
-  const now = new Date()
   set(key, {
     value: value,
-    expiry: now.getTime() + timeToExpiry
+    expiry: Date.now() + timeToExpiry
   })
 }
 
