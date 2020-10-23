@@ -15,6 +15,7 @@ Then import whatever utilities you need.
 ## List of everything
 
 - Browsers only
+
   - [After Polyfill](./polyfills/before.js)
   - [Before Polyfill](./polyfills/before.js)
   - [focusable](./focusable/) - Finds focusable elements
@@ -25,6 +26,7 @@ Then import whatever utilities you need.
   - [store](./store/store.js)
   - [tab](./tab/tab.js) - Helpers for normal Tab key vs Shift + Tab
   - [trapFocus](./trap-focus/trap-focus.js) - traps focus
+  - [insertBefore, insertAfter](./insert-element/insert-element.js) - Inserts elements before/after an existing element
 
 - Everywhere
   - [Convert Case](./convert-case/convert-case.js) - helpers for case covversion
