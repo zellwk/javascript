@@ -34,8 +34,8 @@ toKebab('someString')
 
 NPM:
 
-- Run `npm install -D @zellwk/javascript`
-- Import the `convert-case.js`
+- Run `npm install @zellwk/javascript`
+- Import `convert-case.js`
 
 ```js
 import { toKebab } from "@zellwk/javascript/convert-case"
