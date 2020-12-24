@@ -7,6 +7,8 @@ This file contains utilities to convert any string into the following cases:
 3. `Title Case`
 4. `Sentence case`
 
+[See my process for creating these case-conversion utilties](https://zellwk.com/blog/case-conversion)
+
 ## Examples
 
 ```javascript
