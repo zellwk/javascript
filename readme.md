@@ -27,11 +27,16 @@ Then import whatever utilities you need.
   - [trapFocus](./trap-focus/trap-focus.js) - traps focus
 
 - Everywhere
-  - [Convert Case](./convert-case/convert-case.js) - helpers for case conversion
+  - [Convert Case](./convert-case/) - helpers for case conversion
   - [generateUniqueString](./generate-unique-string/generate-unique-string.js) - Generates a unique string
   - [mix](./mix/) - Merges objects (including accessors)
   - [wait](./wait/wait.js) - Delay before resolving a promise
 
 ## WIP Warning
 
-This repository is always a Work in Progress. I may change
+This repository is always a Work in Progress. I may change anything anytime!
+
+## Changelog
+
+Detailed changes for each release are documented in [the release notes](https://github.com/zellwk/javascript/releases).
+

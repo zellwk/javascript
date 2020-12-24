@@ -15,7 +15,8 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "jest-extended"
+      "jest-extended",
+      "jest-expect-message"
     ]
   },
   "repository": {
@@ -34,6 +35,7 @@
     "@types/jest": "^26.0.4",
     "babel-jest": "^26.1.0",
     "jest": "^26.1.0",
+    "jest-expect-message": "^1.0.2",
     "jest-extended": "^0.11.5",
     "np": "^6.4.0"
   }
