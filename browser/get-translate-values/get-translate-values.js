@@ -9,7 +9,7 @@ export function getTranslateValues (element) {
   const matrix = style.transform || style.webkitTransform || style.mozTransform
 
   // No transform property. Simply return 0 values.
-  if (matrix === 'none') {
+  if (matrix === 'none' || typeof matrix === 'undefined') {
     return {
       x: 0,
       y: 0,
