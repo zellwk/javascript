@@ -12,7 +12,7 @@ if (typeof global === 'object') env = 'node'
  *  code_challenge: string | promise.
  * Note: code_challenge is a string in Node, promise in browser
  */
-function pkce () {
+function PKCE () {
   const codeVerifier = getCodeVerifier()
 
   let codeChallenge
