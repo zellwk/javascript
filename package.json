@@ -3,37 +3,39 @@
   "version": "1.1.0",
   "description": "Collection JavaScript stuff I use.",
   "main": "index.js",
-  "keywords": [
-    "javascript",
-    "node",
-    "snippets"
-  ],
+  "files": ["lib"],
+  "exports": {
+    "./*": "./lib/*"
+  },
+  "type": "module",
+  "keywords": ["javascript", "node"],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "build": "gulp build",
     "release": "np --no-publish && npm publish"
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "jest-extended",
-      "jest-expect-message"
-    ]
+    "setupFilesAfterEnv": ["jest-extended", "jest-expect-message"]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zellwk/useful-js-snippets.git"
+    "url": "git+https://github.com/zellwk/javascript.git"
   },
   "author": "Zell Liew <zellwk@gmail.com> (https://zellwk.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zellwk/useful-js-snippets/issues"
+    "url": "https://github.com/zellwk/javascript/issues"
   },
-  "homepage": "https://github.com/zellwk/useful-js-snippets#readme",
+  "homepage": "https://github.com/zellwk/javascript#readme",
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@types/jest": "^26.0.4",
     "babel-jest": "^26.1.0",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
     "jest": "^26.1.0",
     "jest-expect-message": "^1.0.2",
     "jest-extended": "^0.11.5",
