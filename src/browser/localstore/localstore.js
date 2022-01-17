@@ -1,5 +1,10 @@
 /* eslint-env browser */
 
+export default {
+  get,
+  set,
+  remove
+}
 /**
  * Gets item from localStorage
  * @param {string} key
@@ -12,13 +17,15 @@ export function get (key) {
     // Parses JSON back to Objects
     const result = JSON.parse(retrieved)
 
-    // If key is expried, delete from localstorage and return nothing
-    if (result.expiry < Date.now()) {
+    // If there is no expiry date, return the object
+    if (!result.expiry) return result
+
+    // If key is expired, delete from localstorage and return nothing
+    if (result.expiry && result.expiry < Date.now()) {
       remove(key)
       return
     }
 
-    // Otherwise return the value
     return result.value
   } catch (e) {
     // Returns plain string if not JSON

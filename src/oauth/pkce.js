@@ -11,7 +11,7 @@ const envCtx = EnvCtx()
  *  - code_challenge_method: string
  *  - code_challenge: string .
  */
-export async function PKCE () {
+export default async function PKCE () {
   const codeVerifier = await randomString()
   const codeChallenge = await getCodeChallenge(codeVerifier)
 
