@@ -16,8 +16,6 @@ Then import whatever utilities you need. Replace `<file-name>` with the file of 
 import utility from '@zellwk/javascript/<file-name>'
 ```
 
-Note: This package is ESM only. It does not support Common JS modules.
-
 ## What's here?
 
 Feel free to explore the `src` folder to find what's available.
@@ -31,6 +29,11 @@ You will find documentations for each utility in their respective `readme` files
 ## WIP Warning
 
 This repository is always a Work in Progress. I may change anything anytime!
+
+## Notes
+
+- This package is ESM only. It does not support Common JS modules.
+- You can copy-paste most of these utilities into your project if you don't want to import the entire library.
 
 ## Changelog
 
