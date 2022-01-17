@@ -174,7 +174,6 @@ test('Double objects with nested same array', () => {
   }
 
   const three = mix(one, two)
-  console.log(three)
   expect(three.array.push).toBeFunction()
   expect(three.array).toBeArrayOfSize(6)
 })
