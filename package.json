@@ -1,7 +1,7 @@
 {
   "name": "@zellwk/javascript",
   "version": "1.1.0",
-  "description": "Collection JavaScript stuff I use.",
+  "description": "Collection of useful JavaScript code — for both browsers and node.",
   "main": "index.js",
   "files": ["lib"],
   "exports": {
