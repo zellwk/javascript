@@ -14,7 +14,7 @@ const cases = {
 test('toKebab', () => {
   Object.entries(cases).forEach(c => {
     const result = toKebab(c[1])
-    expect(result, c[0]).toBe('case-with-long-name')
+    expect(result, c[0]).toMatch(/case-with-long-name/i)
   })
 })
 
@@ -37,4 +37,10 @@ test('toTitle', () => {
     const result = toTitle(c[1])
     expect(result, c[0]).toBe('Case With Long Name')
   })
+})
+
+test('Complex Edge Case', () => {
+  const string = 'ICannotBelieve300_got cancelled. DAMN IT'
+  const test = toKebab(string)
+  expect(test).toMatch(/i-cannot-believe-300-got-cancelled-damn-it/)
 })
