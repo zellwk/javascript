@@ -9,9 +9,15 @@ export default function Focusable (element = document) {
     get all () {
       return [
         ...element.querySelectorAll(
-          'a, button, input, textarea, select, details, [tabindex]'
+          'a, button, input, textarea, select, details, iframe, embed, object, summary dialog, audio[controls], video[controls], [contenteditable], [tabindex]'
         )
-      ].filter(el => !el.hasAttribute('disabled'))
+      ].filter(el => {
+        return (
+          !el.hasAttribute('disabled') &&
+          !el.hasAttribute('hidden') &&
+          el.style.display !== 'none'
+        )
+      })
     },
 
     get keyboardOnly () {
