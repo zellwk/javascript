@@ -15,3 +15,7 @@ export function lib () {
 }
 
 export const build = series(clean, lib)
+
+export const watch = function () {
+  gulp.watch(['src/**/*.js', '!**/*.test.js'], { ignoreInitial: false }, lib)
+}
