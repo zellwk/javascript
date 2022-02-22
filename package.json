@@ -1,14 +1,19 @@
 {
   "name": "@zellwk/javascript",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Collection of useful JavaScript code — for both browsers and node.",
   "main": "index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "exports": {
     "./*": "./lib/*"
   },
   "type": "module",
-  "keywords": ["javascript", "node"],
+  "keywords": [
+    "javascript",
+    "node"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -17,7 +22,10 @@
     "release": "npm run build && np --no-publish && npm publish"
   },
   "jest": {
-    "setupFilesAfterEnv": ["jest-extended", "jest-expect-message"]
+    "setupFilesAfterEnv": [
+      "jest-extended",
+      "jest-expect-message"
+    ]
   },
   "repository": {
     "type": "git",
