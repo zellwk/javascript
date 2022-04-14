@@ -4,10 +4,10 @@ Helpers to make local storage easier to use.
 
 ## Usage
 
-Import the library and use it.
+Import the library and use it. Please see the [installation instructions](../../../readme.md) to find the path to localstore.
 
 ```js
-import * as localStore from '@zellwk/javascript/localstore'
+import * as localStore from '<path-to-localstore>'
 ```
 
 ## Methods

@@ -4,7 +4,7 @@ I put together a collection of JavaScript stuff I use. Hope you find them useful
 
 ## Installation and usage
 
-Use this:
+You can install everything in this library with this:
 
 ```bash
 npm install @zellwk/javascript
@@ -13,7 +13,15 @@ npm install @zellwk/javascript
 Then import whatever utilities you need. Replace `<file-name>` with the file of the utility you want to import.
 
 ```bash
-import utility from '@zellwk/javascript/<file-name>'
+import utility from '@zellwk/javascript/<file-name>.js'
+```
+
+You can use these libraries in the frontend even if you don't use a bundler. Please read [this article](https://zellwk.com/blog/node-modules-in-frontend-without-bundlers/) for more info.
+
+In this case, you would import the utility from the `lib` folder.
+
+```js
+import utility from './node_modules/@zellwk/javascript/lib/<file-name>.js'
 ```
 
 ## What's here?
