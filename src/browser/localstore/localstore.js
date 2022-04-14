@@ -45,17 +45,17 @@ export function get (key) {
  * Converts values into JSON before storing.
  * @param {string} key
  * @param {string | object} value - The value to save
- * @param {number} expiry - Milliseconds until expiry. Defaults to 0, which means no expiry
+ * @param {number} expiresIn - Seconds until expiry. Defaults to 0, which means no expiry
  */
-export function set (key, value, { expiry = 0, deleteWhenExpired = true }) {
-  if (!expiry) {
+export function set (key, value, { expiresIn = 0, deleteWhenExpired = true }) {
+  if (!expiresIn) {
     localStorage.setItem(key, stringify(value))
     return
   }
 
   value = {
     ...value,
-    expiry: Date.now() + parseInt(expiry, 10),
+    expiry: Date.now() + parseInt(expiresIn, 10) * 1000,
     deleteWhenExpired
   }
 

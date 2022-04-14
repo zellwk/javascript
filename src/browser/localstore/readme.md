@@ -31,7 +31,7 @@ set(key, value, options)
 
 Here are the available options:
 
-- `expiry` - Time to expiry in milliseconds. Defaults to 0 which means it will never expire.
+- `expiresIn` - Time to expiry in seconds. Defaults to 0 which means it will never expire.
 - `deleteWhenExpired`
   - If `true`, the item will be deleted from the local storage when it expires. This deletion happens as you check local storage with `get`.
   - If `false`, an `expired` property set to `true` will be added to the item when the item has expired.
@@ -42,6 +42,8 @@ set(key, value, {
   deleteWhenExpired: true // Defaults to true
 })
 ```
+
+Note: We use seconds for `expiresIn` because the `expires_in` value (from OAuth tokens) is usually set in seconds. localStore converts this value into milliseconds as it sets the expiry date.
 
 ### Get
 
