@@ -47,7 +47,11 @@ export function get (key) {
  * @param {string | object} value - The value to save
  * @param {number} expiresIn - Seconds until expiry. Defaults to 0, which means no expiry
  */
-export function set (key, value, { expiresIn = 0, deleteWhenExpired = true }) {
+export function set (
+  key,
+  value,
+  { expiresIn = 0, deleteWhenExpired = true } = {}
+) {
   if (!expiresIn) {
     localStorage.setItem(key, stringify(value))
     return
