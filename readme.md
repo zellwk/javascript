@@ -14,7 +14,13 @@ You can install the library with npm:
 npm install @zellwk/javascript
 ```
 
-Then import whatever functions you need by traversing the folders.
+Then import whatever functions you need by traversing the folders. When importing, you can skip the `src` path because that is already handled for you in the `package.json` file.
+
+Example for using Local Store:
+
+```js
+import * as localStore from '@zellwk/javascript/browser/local-store'
+```
 
 ## What's here?
 
