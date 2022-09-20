@@ -1,7 +1,7 @@
-/* eslint-env jest */
+import { expect, it } from 'vitest'
 import mix from './mix.js'
 
-test('Merge objects', () => {
+it('Merge objects', () => {
   const one = { one: 'one', overwrite: 'nope' }
   const two = { two: 'two', overwrite: 'yes' }
   const three = mix(one, two)
@@ -13,7 +13,7 @@ test('Merge objects', () => {
   })
 })
 
-test('Empty + Nested', () => {
+it('Empty + Nested', () => {
   const one = {}
   const two = {
     nested: {
@@ -38,7 +38,7 @@ test('Empty + Nested', () => {
   expect(two.nested.deep.value).toBe('deep-two')
 })
 
-test('Double Nested Objects', () => {
+it('Double Nested Objects', () => {
   const one = {
     one: 'one',
     nested: {
@@ -69,7 +69,7 @@ test('Double Nested Objects', () => {
   expect(three.nested.deep.two).toBe('deep-two')
 })
 
-test('Accessors', () => {
+it('Accessors', () => {
   let count = 0
   const one = {}
   const two = {
@@ -92,7 +92,7 @@ test('Accessors', () => {
   expect(two.count !== three.count)
 })
 
-test('Empty + Nested accessors', () => {
+it('Empty + Nested accessors', () => {
   let count = 0
   const one = {}
   const two = {
@@ -111,11 +111,11 @@ test('Empty + Nested accessors', () => {
   expect(two.nested).not.toBe(three.nested)
 
   const descriptor = Object.getOwnPropertyDescriptor(three.nested, 'count')
-  expect(descriptor.get).toBeFunction()
-  expect(descriptor.set).toBeFunction()
+  expect(typeof descriptor.get).toBe('function')
+  expect(typeof descriptor.set).toBe('function')
 })
 
-test('Double nested with Accessors', () => {
+it('Double nested with Accessors', () => {
   let count = 0
   const one = {
     nested: {
@@ -145,27 +145,27 @@ test('Double nested with Accessors', () => {
   const accessOne = Object.getOwnPropertyDescriptor(three.nested, 'accessOne')
   const accessTwo = Object.getOwnPropertyDescriptor(three.nested, 'accessTwo')
 
-  expect(accessOne.get).toBeFunction()
-  expect(accessOne.set).toBeFunction()
-  expect(accessTwo.get).toBeFunction()
-  expect(accessTwo.set).toBeFunction()
+  expect(typeof accessOne.get).toBe('function')
+  expect(typeof accessOne.set).toBe('function')
+  expect(typeof accessTwo.get).toBe('function')
+  expect(typeof accessTwo.set).toBe('function')
 })
 
-test('Nested arrays', () => {
+it('Nested arrays', () => {
   const one = {}
   const two = { array: [1, 2, 3] }
   const three = mix(one, two)
 
   expect(three).toEqual(two)
-  expect(three.array.push).toBeFunction()
+  expect(typeof three.array.push).toBe('function')
 
   // Prevent mutation
   three.array.push(4)
-  expect(two.array).toBeArrayOfSize(3)
-  expect(three.array).toBeArrayOfSize(4)
+  expect(two.array).toHaveLength(3)
+  expect(three.array).toHaveLength(4)
 })
 
-test('Double objects with nested same array', () => {
+it('Double objects with nested same array', () => {
   const one = {
     array: [1, 2, 3]
   }
@@ -174,11 +174,11 @@ test('Double objects with nested same array', () => {
   }
 
   const three = mix(one, two)
-  expect(three.array.push).toBeFunction()
-  expect(three.array).toBeArrayOfSize(6)
+  expect(typeof three.array.push).toBe('function')
+  expect(three.array).toHaveLength(6)
 })
 
-test('Objects in Arrays', () => {
+it('Objects in Arrays', () => {
   const one = {}
   const two = {
     array: [
@@ -195,15 +195,15 @@ test('Objects in Arrays', () => {
   const three = mix(one, two)
 
   expect(three).toEqual(two)
-  expect(three.array.push).toBeFunction()
+  expect(typeof three.array.push).toBe('function')
   expect(two.array[1]).not.toBe(three.array[1])
 
   // Ensures accessors are copied over
   const descriptor = Object.getOwnPropertyDescriptor(three.array[3], 'count')
-  expect(descriptor.get).toBeFunction()
+  expect(typeof descriptor.get).toBe('function')
 })
 
-test('Deep nested arrays', () => {
+it('Deep nested arrays', () => {
   const one = {}
   const two = {
     array: [1, [2], 3]
@@ -211,12 +211,12 @@ test('Deep nested arrays', () => {
   const three = mix(one, two)
 
   expect(three).toEqual(two)
-  expect(three.array).toBeArrayOfSize(3)
-  expect(three.array[1]).toBeArrayOfSize(1)
+  expect(three.array).toHaveLength(3)
+  expect(three.array[1]).toHaveLength(1)
   expect(two.array[1]).not.toBe(three.array[1])
 })
 
-test('Functions (cannot be cloned)', () => {
+it('Functions (cannot be cloned)', () => {
   const one = {}
   const two = {
     nested: {
@@ -237,7 +237,7 @@ test('Functions (cannot be cloned)', () => {
   expect(three.nested.deep.identity).toBe(two.nested.deep.identity)
 })
 
-test('Nested Dates', () => {
+it('Nested Dates', () => {
   const one = {}
   const two = {
     date: new Date(),
@@ -252,7 +252,7 @@ test('Nested Dates', () => {
   expect(three.nested.date).not.toBe(two.nested.date)
 })
 
-test('Nested Maps', () => {
+it('Nested Maps', () => {
   const one = {}
   const two = {
     map: new Map(),
@@ -283,7 +283,7 @@ test('Nested Maps', () => {
   // That's why we're not testing WeakMap
 })
 
-test('Nested Sets', () => {
+it('Nested Sets', () => {
   const one = {}
   const two = {
     set: new Set(),
@@ -300,12 +300,12 @@ test('Nested Sets', () => {
 
   expect(three.set).not.toBe(two.set)
   expect(three.set).toEqual(two.set)
-  expect(three.set.has('one')).toBeTrue()
-  expect(three.set.has(a)).toBeFalse()
+  expect(three.set.has('one')).toBe(true)
+  expect(three.set.has(a)).toBe(false)
 
   expect(three.nested.set).not.toBe(two.nested.set)
   expect(three.nested.set).toEqual(two.nested.set)
-  expect(three.nested.set.has('nested')).toBeTrue()
+  expect(three.nested.set.has('nested')).toBe(true)
 
   // Note: WeakSet contains objects only... so there's no point creating a deep clone. You won't be able to access them.
   // That's why we're not testing WeakSet
@@ -313,11 +313,11 @@ test('Nested Sets', () => {
 
 // Prevents Prototype Pollution
 // https://codeburst.io/what-is-prototype-pollution-49482fc4b638
-test('Safe Merge', () => {
+it('Safe Merge', () => {
   const polluted = JSON.parse('{"__proto__": {"admin": true}}')
   const mixed = mix(polluted)
 
   /* eslint-disable */
-  expect(mixed.__proto__).toBeEmpty()
+  expect(mixed.__proto__).toEqual({})
   /* eslint-enable */
 })

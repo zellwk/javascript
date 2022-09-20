@@ -2,30 +2,17 @@
   "name": "@zellwk/javascript",
   "version": "2.2.2",
   "description": "Collection of useful JavaScript code — for both browsers and node.",
-  "main": "index.js",
-  "files": [
-    "lib"
-  ],
-  "exports": {
-    "./*": "./lib/*"
-  },
   "type": "module",
-  "keywords": [
-    "javascript",
-    "node"
-  ],
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "build": "gulp build",
-    "watch": "gulp watch",
-    "release": "npm run build && np --no-publish && npm publish"
+  "files": ["src"],
+  "exports": {
+    "./*": "./src/*"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "jest-extended",
-      "jest-expect-message"
-    ]
+  "keywords": ["javascript", "node"],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "release": "np --no-publish && npm publish"
   },
   "repository": {
     "type": "git",
@@ -38,16 +25,8 @@
   },
   "homepage": "https://github.com/zellwk/javascript#readme",
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@types/jest": "^26.0.4",
-    "babel-jest": "^26.1.0",
-    "del": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-rename": "^2.0.0",
-    "jest": "^26.1.0",
-    "jest-expect-message": "^1.0.2",
-    "jest-extended": "^0.11.5",
-    "np": "^6.4.0"
+    "np": "^6.4.0",
+    "vite": "^3.1.3",
+    "vitest": "^0.23.4"
   }
 }

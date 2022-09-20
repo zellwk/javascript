@@ -11,7 +11,7 @@ Detects network changes and updates the `<body>` element automatically.
 Import the module and run the `updateStatus` method.
 
 ```js
-import network from '@zellwk/javascript/network
+import network from '@zellwk/javascript/network'
 network.updateStatus()
 ```
 

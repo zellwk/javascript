@@ -1,7 +1,7 @@
-import EnvCtx from './env-ctx.js'
+import Env from './env.js'
 import { randomString } from './random.js'
 
-const envCtx = EnvCtx()
+const env = Env()
 
 /**
  * Generates an object with PKCE parameters.
@@ -24,10 +24,10 @@ export default async function PKCE () {
 }
 
 async function getCodeChallenge (verifier) {
-  if (envCtx === 'browser') {
+  if (env === 'browser') {
     return getCodeChallengeInBrowser(verifier)
   }
-  if (envCtx === 'node') {
+  if (env === 'node') {
     return getCodeChallengeInNode(verifier)
   }
 }
