@@ -1,13 +1,18 @@
 {
   "name": "@zellwk/javascript",
-  "version": "2.2.2",
+  "version": "3.0.0",
   "description": "Collection of useful JavaScript code — for both browsers and node.",
   "type": "module",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/*"
   },
-  "keywords": ["javascript", "node"],
+  "keywords": [
+    "javascript",
+    "node"
+  ],
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
