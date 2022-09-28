@@ -1,35 +1,21 @@
 export default {
-  get status () {
-    const hidden = element.hasAttribute('hidden')
-    if (hidden) return 'hidden'
-    return 'displayed'
-  },
-
-  hide (element) {
-    element.setAttribute('hidden', true)
-  },
-
-  show (element) {
-    element.removeAttribute('hidden')
-  },
-
   /**
    * Gets siblings of the specified element
    * @param {HTMLElement} element
-   * @example siblings(element)
    */
-  get siblings (element) {
+  siblings (element) {
     return [...element.parentElement.children].filter(el => el !== element)
   },
 
   /**
    * Gets the Bounding box with information about
    * horizontal and vertical centers of the box
-   * @see https://zellwk.com/blog/get-bounding-box
    * @param {HTMLElement} element
    */
-  get boundingBox (element) {
+  boundingBox (element) {
     const box = element.getBoundingClientRect()
+    const style = window.getComputedStyle(box)
+
     const ret = {}
 
     for (const prop in box) {
@@ -38,6 +24,22 @@ export default {
 
     ret.xCenter = (box.left + box.right) / 2
     ret.yCenter = (box.top + box.bottom) / 2
+
+    // Adjust Width and Height if Box Sizing is content-box
+    // Which shouldn't be the case for most sites..., but just in case when working with other people's code.
+    const boxSizing = style.boxSizing
+
+    if (boxSizing === 'content-box') {
+      const padding = {
+        top: parseInt(style.paddingTop),
+        right: parseInt(style.paddingRight),
+        bottom: parseInt(style.paddingBottom),
+        left: parseInt(style.paddingLeft)
+      }
+
+      ret.width = box.width - padding.left - padding.right
+      ret.height = box.height - padding.top - padding.bottom
+    }
 
     return ret
   }
