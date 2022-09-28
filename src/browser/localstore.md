@@ -1,13 +1,11 @@
-# Localstore
+# localStore
 
 Helpers to make local storage easier to use.
 
 ## Usage
 
-Import the library and use it. Please see the [installation instructions](../../../readme.md) to find the path to localstore.
-
 ```js
-import * as localStore from '<path-to-localstore>'
+import localStore from '@zellwk/javascript/browser/localStore'
 ```
 
 ## Methods
@@ -21,29 +19,11 @@ import * as localStore from '<path-to-localstore>'
 Sets an item in local storage. If the item is an object or an array, it will be converted into JSON.
 
 ```js
-set(key, value, options)
+set(key, value)
 ```
 
 - `key` - The key of the item to set.
-- `value` - The value to set. This value will be converted into JSON automatically.
-
-#### Set Options
-
-Here are the available options:
-
-- `expiresIn` - Time to expiry in seconds. Defaults to 0 which means it will never expire.
-- `deleteWhenExpired`
-  - If `true`, the item will be deleted from the local storage when it expires. This deletion happens as you check local storage with `get`.
-  - If `false`, an `expired` property set to `true` will be added to the item when the item has expired.
-
-```js
-set(key, value, {
-  expiry: 1000 // Defaults to 0
-  deleteWhenExpired: true // Defaults to true
-})
-```
-
-Note: We use seconds for `expiresIn` because the `expires_in` value (from OAuth tokens) is usually set in seconds. localStore converts this value into milliseconds as it sets the expiry date.
+- `value` - The value to set. If this value is an object, it will be converted into JSON automatically.
 
 ### Get
 

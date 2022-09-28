@@ -4,9 +4,7 @@ I put together a collection of JavaScript functions I use. I found them exceptio
 
 Note: This collection is ESM only and cannot be used with CommonJS.
 
-You can use these libraries in the frontend even if you don't use a bundler. Please read [this article](https://zellwk.com/blog/node-modules-in-frontend-without-bundlers/) for more info.
-
-## Installation and usage
+## Installation and usage with npm
 
 You can install the library with npm:
 
@@ -21,6 +19,20 @@ Example for using Local Store:
 ```js
 import * as localStore from '@zellwk/javascript/browser/local-store'
 ```
+
+## Installation and usage without npm
+
+You can use these libraries in the frontend even if you don't use a bundler. All you need to do is retrieve the library from a CDN like JsDelivr.
+
+When you use this method, you need to include the `src` folder in your path.
+
+Here's an example:
+
+```js
+import localStore from 'https://cdn.jsdelivr.net/npm/@zellwk/javascript@3.0.0/src/browser/localstore.js'
+```
+
+See [this article](https://zellwk.com/blog/node-modules-in-frontend-without-bundlers/) to make this nicer for your project.
 
 ## What's here?
 
