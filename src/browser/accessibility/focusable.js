@@ -15,7 +15,7 @@ export default function Focusable (element = document) {
         return (
           !el.hasAttribute('disabled') &&
           !el.hasAttribute('hidden') &&
-          el.style.display !== 'none'
+          el.computedStyleMap().get('display').value !== 'none'
         )
       })
     },
