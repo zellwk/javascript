@@ -1,47 +1,50 @@
 /* eslint-env jest */
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { toKebab, toCamel, toSentence, toTitle } from './convert-case'
 
 const cases = {
-  pascal: 'CaseWithLongName',
-  camel: 'caseWithLongName',
-  snake: 'case_with_long_name',
-  kebab: 'case-with-long-name',
-  sentence: 'Case with long name',
-  title: 'Case With Long Name',
-  mix: 'case_With-long name'
+  kebab: 'case-with-long-name100',
+  snake: 'case_with_long_name100',
+  camel: 'caseWithLongName100',
+  pascal: 'CaseWithLongName100',
+  sentence: 'Case with long name100',
+  title: 'Case With Long Name100',
+  constant: 'CASE_WITH_LONG_NAME100',
+  mixCases: 'case_WITH-Long name100',
 }
 
-it('toKebab', () => {
+describe('To Kebab', _ => {
   Object.entries(cases).forEach(c => {
-    const result = toKebab(c[1])
-    expect(result, c[0]).toMatch(/case-with-long-name/i)
+    it(`From ${c[0]}`, () => {
+      const result = toKebab(c[1])
+      expect(result, c[0]).toBe('case-with-long-name-100')
+    })
   })
 })
 
-it('toCamel', () => {
+describe('To Camel', _ => {
   Object.entries(cases).forEach(c => {
-    const result = toCamel(c[1])
-    expect(result, c[0]).toBe('caseWithLongName')
+    it(`From ${c[0]}`, () => {
+      const result = toCamel(c[1])
+      expect(result, c[0]).toBe('caseWithLongName100')
+    })
   })
 })
 
-it('toSentence', () => {
+describe('To Sentence', _ => {
   Object.entries(cases).forEach(c => {
-    const result = toSentence(c[1])
-    expect(result, c[0]).toBe('Case with long name')
+    it(`From ${c[0]}`, () => {
+      const result = toSentence(c[1])
+      expect(result, c[0]).toBe('Case with long name 100')
+    })
   })
 })
 
-it('toTitle', () => {
+describe('To Title', _ => {
   Object.entries(cases).forEach(c => {
-    const result = toTitle(c[1])
-    expect(result, c[0]).toBe('Case With Long Name')
+    it(`From ${c[0]}`, () => {
+      const result = toTitle(c[1])
+      expect(result, c[0]).toBe('Case With Long Name 100')
+    })
   })
-})
-
-it('Complex Edge Case', () => {
-  const string = 'ICannotBelieve300_got cancelled. DAMN IT'
-  const test = toKebab(string)
-  expect(test).toMatch(/i-cannot-believe-300-got-cancelled-damn-it/)
 })

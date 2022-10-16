@@ -2,17 +2,35 @@
 // Case Conversion Utilities
 // Note: All case conversion functions require `toKebab` to work.
 // ------------------------
-export function toKebab (string) {
-  // Complex and complete regex string thanks to https://github.com/zellwk/javascript/issues/14
+export function toKebab(string) {
   return string
-    .replace(
-      /([^\p{L}\d]+|(?<=\p{L})(?=\d)|(?<=\d)(?=\p{L})|(?<=[\p{Ll}\d])(?=\p{Lu})|(?<=\p{Lu})(?=\p{Lu}\p{Ll})|(?<=[\p{L}\d])(?=\p{Lu}\p{Ll}))/gu,
-      '-'
-    )
-    .toLowerCase()
+    .split('')
+    .map((letter, index) => {
+      const previousLetter = string[index - 1] || ''
+      const currentLetter = letter
+
+      if (isDigit(currentLetter) && !isDigit(previousLetter)) {
+        return `-${currentLetter}`
+      }
+
+      if (!isCaps(currentLetter)) return currentLetter
+
+      if (previousLetter === '') {
+        return `${currentLetter.toLowerCase()}`
+      }
+
+      if (isCaps(previousLetter)) {
+        return `${currentLetter.toLowerCase()}`
+      }
+
+      return `-${currentLetter.toLowerCase()}`
+    })
+    .join('')
+    .trim()
+    .replace(/[-_\s]+/g, '-')
 }
 
-export function toCamel (string) {
+export function toCamel(string) {
   return toKebab(string)
     .split('-')
     .map((word, index) => {
@@ -22,7 +40,7 @@ export function toCamel (string) {
     .join('')
 }
 
-export function toTitle (string) {
+export function toTitle(string) {
   return toKebab(string)
     .split('-')
     .map(word => {
@@ -31,7 +49,20 @@ export function toTitle (string) {
     .join(' ')
 }
 
-export function toSentence (string) {
+export function toSentence(string) {
   const interim = toKebab(string).replace(/-/g, ' ')
   return interim.slice(0, 1).toUpperCase() + interim.slice(1)
+}
+
+// Checks whether character is Uppercase.
+// Crude version. Checks only A-Z.
+function isCaps(char) {
+  if (char.match(/[A-Z]/)) return true
+  return false
+}
+
+// Checks whether character is digit.
+function isDigit(char) {
+  if (char.match(/[0-9]/)) return true
+  return false
 }
