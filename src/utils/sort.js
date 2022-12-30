@@ -1,11 +1,14 @@
 /**
- * Sorts an array of objects or strings
+ * Sorts an array of objects or strings without mutating the array
  */
 export function sort({
+  array, // Array to sort.
   sortBy, // Property to sort by. Used when sorting array of objects.
   sortOrder, // 'asc' or 'desc'
 }) {
-  const sorted = response.body.sort((a, b) => {
+  const clone = array.slice()
+
+  const sorted = clone.sort((a, b) => {
     let one = a
     let two = b
 
@@ -27,4 +30,6 @@ export function sort({
       return 0
     }
   })
+
+  return sorted
 }
