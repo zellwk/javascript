@@ -9,7 +9,6 @@ export function sort(
   }
 ) {
   const clone = array.slice()
-
   const sorted = clone.sort((a, b) => {
     let one = a
     let two = b
