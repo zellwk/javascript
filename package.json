@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/zellwk/javascript#readme",
   "devDependencies": {
-    "np": "^6.4.0",
+    "np": "^7.6.4",
     "vite": "^3.1.3",
     "vitest": "^0.23.4"
   }
