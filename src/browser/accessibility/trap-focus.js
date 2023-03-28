@@ -1,6 +1,6 @@
 import Focusable from './focusable.js'
 
-export default function trapFocus (element, event) {
+export default function trapFocus(element, event) {
   const focusables = Focusable(element)
   const { firstFocusable, lastFocusable } = focusables
 
