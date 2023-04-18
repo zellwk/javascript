@@ -1,6 +1,6 @@
 {
   "name": "@zellwk/javascript",
-  "version": "3.2.5",
+  "version": "4.0.0",
   "description": "Collection of useful JavaScript code — for both browsers and node.",
   "type": "module",
   "files": [
