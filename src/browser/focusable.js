@@ -25,11 +25,11 @@ export default function Focusable(element = document) {
           `
         ),
       ].filter(el => {
-        return (
-          !el.hasAttribute('disabled') &&
-          !el.hasAttribute('hidden') &&
-          el.computedStyleMap().get('display').value !== 'none'
-        )
+        if (el.hasAttribute('disabled')) return false
+        if (el.hasAttribute('hidden')) return false
+        if (window.getComputedStyle(el).display === 'none') return false
+
+        return true
       })
     },
 
