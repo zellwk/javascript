@@ -57,12 +57,10 @@ export function toSentence(string) {
 // Checks whether character is Uppercase.
 // Crude version. Checks only A-Z.
 function isCaps(char) {
-  if (char.match(/[A-Z]/)) return true
-  return false
+  return /\p{Lu}/u.test(char);
 }
 
 // Checks whether character is digit.
 function isDigit(char) {
-  if (char.match(/[0-9]/)) return true
-  return false
+  return /[0-9]/.test(char);
 }
